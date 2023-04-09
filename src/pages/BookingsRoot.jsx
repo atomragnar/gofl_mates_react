@@ -1,13 +1,12 @@
 import {BookingsNavigation} from "../components/BookingsNavigation";
-import PageContent from "./PageContent";
+import {BookingContent} from "./BookingContent";
 import {Outlet} from "react-router-dom";
 import {Grid, Card} from "@mui/material";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+
 
 export const BookingsRootLayout = () => {
     return (
+        <BookingContent>
                  <Grid
                     container
                     spacing={0}
@@ -30,16 +29,7 @@ export const BookingsRootLayout = () => {
                         <Outlet/>
                         </Grid>
                 </Grid>
-   /*     <>
-            <div style={{
-                justifyContent: 'center',
-                alignContent: 'center',
-                height: '100vh'
-            }}>
-                <BookingsNavigation/>
-                        <Outlet/>
-            </div>
-        </>*/
+        </BookingContent>
 
     )
 }

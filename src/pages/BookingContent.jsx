@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-
-function PageContent({title, children}) {
+export const BookingContent = ({children}) => {
     return (
         <Wrapper>
             {children}
@@ -9,12 +8,10 @@ function PageContent({title, children}) {
     );
 }
 
-export default PageContent;
-
 const Wrapper = styled.div`
   width: 70%;
   height: 70%;
-  margin-left: 20%;
+  margin-left: 15%;
   padding: 20px 30px;
   margin-top: 100px;
 `;

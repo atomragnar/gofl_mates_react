@@ -12,7 +12,7 @@ export const HomePage = () => {
             <Services />
             <Tournaments />
             <News />
-            <Pricing />
+            {/*<Pricing />*/}
             <Contact />
         </>
     )

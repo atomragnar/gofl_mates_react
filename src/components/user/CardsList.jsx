@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Card, CardContent, CardActions, Button, Typography, List, ListItem, ListItemText } from '@mui/material';
 import RequestButton from './RequestButton';
+import {BookingRequestCard} from "./BookingRequestCard";
 
 const CardWrapper = styled(Card)`
   display: flex;
@@ -27,7 +28,10 @@ function ListComponent({ playAdRequests }) {
         <List>
             {playAdRequests.map((request) => (
                 <ListItem key={request.playAdRequestId}>
-                    <CardWrapper>
+                    <BookingRequestCard
+                    request={request}
+                    />
+                    {/*<CardWrapper>
                         <CardContentWrapper>
                             <Typography variant="h5" component="h2">
                                 {request.playAdRequestId}
@@ -45,9 +49,9 @@ function ListComponent({ playAdRequests }) {
                             path={`http://localhost:8085/api/playadrequest/denied/${request.playAdRequestId}`}
                             buttonText="deny"
                         />
-                            {/* <Button size="small">Button</Button> */}
+                             <Button size="small">Button</Button>
                         </CardActionsWrapper>
-                    </CardWrapper>
+                    </CardWrapper>*/}
                 </ListItem>
             ))}
         </List>

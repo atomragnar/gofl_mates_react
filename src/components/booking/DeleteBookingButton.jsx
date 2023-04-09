@@ -5,7 +5,7 @@ function DeleteBookingAction(playAdId) {
 
     const token = getAuthToken();
 
-    const proceed = window.confirm('Are you sure?');
+    const proceed = window.confirm('Är du säker?');
 
     if (proceed) {
 

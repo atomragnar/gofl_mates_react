@@ -19,7 +19,7 @@ export const PlayAdsList = ({playAds}) => {
         );
     }
 
-    const playAdsPerPage = 9;
+    const playAdsPerPage = 10;
     const totalPages = Math.ceil(filterPlayAds().length / playAdsPerPage);
 
     function filteredPlayAds() {
@@ -58,9 +58,11 @@ export const PlayAdsList = ({playAds}) => {
             />
             </Grid>
             <Divider/>
-            <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+                  justifyContent="center"
+                  alignItems="center">
                 {filteredPlayAds().map((playAd) => (
-                    <Grid item xs={4}>
+                    <Grid >
                         <PlayAdsCard booking={playAd} key={playAd.playAdId}/>
                     </Grid>
                 ))}

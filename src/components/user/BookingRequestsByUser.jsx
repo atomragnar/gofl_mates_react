@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import {getAuthToken, getUserId} from "../../util/Auth";
 import styled from 'styled-components';
 import { Card, CardContent, CardActions, Button, Typography, List, ListItem, ListItemText } from '@mui/material';
+import {UsersOwnRequestsCard} from "./UsersOwnRequestsCard";
 
 export default function BookingRequestsByUser() {
     const [playAdRequests, setplayAdRequests] = useState([]);
@@ -29,11 +30,14 @@ export default function BookingRequestsByUser() {
     }, []);
 
     return (
-  
+
             <List>
                 {playAdRequests.map((request) => (
                     <ListItem key={request.playAdRequestId}>
-                         <CardWrapper>
+                        <UsersOwnRequestsCard
+                        request={request}
+                        />
+                         {/*<CardWrapper>
                         <CardContentWrapper>
                         <Typography variant="h5" component="h2">
                                 Förfrågan på spelannons #{request.playAdId}
@@ -45,11 +49,11 @@ export default function BookingRequestsByUser() {
                                 Status på förfrågan: {request.status}
                             </Typography>
                         </CardContentWrapper>
-                        </CardWrapper>
+                        </CardWrapper>*/}
                     </ListItem>
                 ))}
             </List>
-    
+
     );
 }
 

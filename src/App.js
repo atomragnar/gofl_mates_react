@@ -20,6 +20,7 @@ import UsersRequestsToList from './components/user/UsersRequestsToList';
 import BookingRequestsByUser from './components/user/BookingRequestsByUser';
 import UsersCreatedPlayAds from './components/user/UsersCreatedPlayAds';
 import UsersBookingsList from './components/user/UsersBookingsList';
+import {OtherUsersRoot} from "./pages/OtherUsersRoot";
 
 const router = createBrowserRouter([
   {
@@ -82,10 +83,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'users',
-        element: <AllUsersSearch/>,
+        element: <OtherUsersRoot/>,
         children: [
           {
             index: true,
+            element: <AllUsersSearch/>
           },
         ],
       },
