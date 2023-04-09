@@ -137,6 +137,8 @@ body {
   overflow-x: hidden;
   font-size: 16px;
   font-weight: 400;
+  height: 100%;
+  margin-top: 90px;
 }
 .container {
   width: 100%;

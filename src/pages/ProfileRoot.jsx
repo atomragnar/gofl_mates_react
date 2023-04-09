@@ -1,8 +1,4 @@
-import {ProfileNavigation} from "../components/ProfileNavigation";
 import {Outlet} from "react-router-dom";
-import styled from "styled-components";
-import px2vw from "../util/px2vw";
-import PageContent from "./PageContent";
 import {ProfileContainer} from "../components/containers/ProfileContainer";
 
 export const ProfileRootLayout = () => {

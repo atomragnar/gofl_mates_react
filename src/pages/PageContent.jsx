@@ -1,18 +1,14 @@
 
-import styled from "styled-components";
-import px2vw from "../util/px2vw";
 
 function PageContent({title, children}) {
     return (
-        <Container>
             {children}
-        </Container>
     );
 }
 
 export default PageContent;
 
-
+/*
 export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -50,4 +46,4 @@ export const BoxTitle = styled.h3`
   @media (min-width: 1024px) {
     font-size: 1.5rem;
   }
-`;
+`;*/
