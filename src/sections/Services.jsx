@@ -4,18 +4,17 @@ import styled from "styled-components";
 import ServiceBox from "../components/elements/ServiceBox";
 import FullButton from "../components/buttons/FullButton";
 // Assets
-import AddImage1 from "../assets/img/add/1.png";
-import AddImage2 from "../assets/img/add/2.png";
-import AddImage3 from "../assets/img/add/3.png";
-import AddImage4 from "../assets/img/add/4.png";
-import Header from "./Header";
+import AddImage1 from "../assets/img/bror.jpeg";
+import AddImage2 from "../assets/img/hio.jpeg";
+import AddImage3 from "../assets/img/drive.jpeg";
+import AddImage4 from "../assets/img/next-tee.jpeg";
 
 export default function Services() {
   return (
     <Wrapper id="services">
-      <Header/>
-      <div className="whiteBg radius6" style={{ padding: "60px 0" }}>
-        <div className="container">
+      <div className="lightBg" style={{ padding: "50px 0" }}></div>
+      <div className="whiteBg" style={{ padding: "60px 0" }}>
+        <div className="container1">
           <HeaderInfo>
             <h1 className="font40 extraBold">Hur funkar Golf Mates?</h1>
             <p className="font13">
@@ -24,7 +23,8 @@ export default function Services() {
               Vem du väljer att spela med är upp till dig!
             </p>
           </HeaderInfo>
-          <ServiceBoxRow className="flex">
+
+          <ServiceBoxRow className="flex1">
             <ServiceBoxWrapper>
               <ServiceBox
                 icon="roller"
@@ -52,8 +52,8 @@ export default function Services() {
           </ServiceBoxRow>
         </div>
         <div className="lightBg">
-          <div className="container">
-            <Advertising className="flexSpaceCenter">
+          <div className="container1">
+            <Advertising className="flexSpaceCenter1">
               <AddLeft>
                 <h4 className="font15 semiBold">Om oss</h4>
                 <h2 className="font40 extraBold">Golf Mates</h2>
@@ -61,7 +61,7 @@ export default function Services() {
                   Vi möjliggör det enkelt för dig som användare att hitta nya golfvänner baserat på din skicklighetsnivå samt vilket distrikt du bor i. Enkelt, snabbt och framförallt kul!
                 </p>
                 <ButtonsRow
-                  className="flexNullCenter"
+                  className="flexNullCenter1"
                   style={{ margin: "30px 0" }}
                 >
                   <div style={{ width: "190px" }}>
@@ -81,20 +81,20 @@ export default function Services() {
               </AddLeft>
               <AddRight>
                 <AddRightInner>
-                  <div className="flexNullCenter">
-                    <AddImgWrapp1 className="flexCenter">
-                      <img src={AddImage1} alt="office" />
+                  <div className="flexNullCenter1">
+                    <AddImgWrapp1 className="flexCenter1">
+                      <img src={AddImage1} alt="office1" />
                     </AddImgWrapp1>
                     <AddImgWrapp2>
-                      <img src={AddImage2} alt="office" />
+                      <img src={AddImage2} alt="office1" />
                     </AddImgWrapp2>
                   </div>
-                  <div className="flexNullCenter">
+                  <div className="flexNullCenter1">
                     <AddImgWrapp3>
-                      <img src={AddImage3} alt="office" />
+                      <img src={AddImage3} alt="office1" />
                     </AddImgWrapp3>
                     <AddImgWrapp4>
-                      <img src={AddImage4} alt="office" />
+                      <img src={AddImage4} alt="office1" />
                     </AddImgWrapp4>
                   </div>
                 </AddRightInner>

@@ -1,12 +1,40 @@
 import {Outlet} from "react-router-dom";
-import {ProfileContainer} from "../components/containers/ProfileContainer";
-import {Card, Grid} from "@mui/material";
-import {BookingsNavigation} from "../components/BookingsNavigation";
 import {ProfileNavigation} from "../components/ProfileNavigation";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import {Grid} from "@mui/material";
+import {BookingsNavigation} from "../components/BookingsNavigation";
+
 
 export const ProfileRootLayout = () => {
     return (
-        <ProfileContainer>
+        /*        <ProfileContainer>
+               <Grid
+                   container
+                   spacing={0}
+                   direction="column"
+                   alignItems="center"
+                   justifyContent="center"
+                   style={{minHeight: '100vh'}}
+               >
+                   <Grid xs={12}>
+                       <ProfileNavigation/>
+                   </Grid>
+
+                       <Grid
+                           container
+                           spacing={0}
+                           direction="column"
+                           alignItems="center"
+                           justifyContent="center"
+                           style={{minHeight: '100vh'}}
+                       >
+                           <Outlet/>
+                       </Grid>
+               </Grid>
+               </ProfileContainer> */
+
         <Grid
             container
             spacing={0}
@@ -18,19 +46,30 @@ export const ProfileRootLayout = () => {
             <Grid xs={12}>
                 <ProfileNavigation/>
             </Grid>
-
-                <Grid
-                    container
-                    spacing={0}
-                    direction="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    style={{minHeight: '100vh'}}
-                >
-                    <Outlet/>
-                </Grid>
+            <Grid
+                container
+                spacing={0}
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
+                style={{minHeight: '100vh'}}
+            >
+                <Outlet/>
+            </Grid>
         </Grid>
-        </ProfileContainer>
 
-    )
+  /*      <Container>
+            <Row>
+                <Col>1 of 3</Col>
+                <Col xs={6}>
+
+                    <ProfileNavigation/>
+                    <Outlet/>
+
+                </Col>
+                <Col>3 of 3</Col>
+            </Row>
+        </Container>*/
+
+)
 }

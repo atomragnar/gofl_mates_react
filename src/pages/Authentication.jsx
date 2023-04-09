@@ -44,20 +44,26 @@ export async function action({ request }) {
         throw json({ message: 'Could not authenticate user.' }, { status: 500 });
     }
 
-    const resData = await response.json();
-    const token = resData.token;
+    if (mode === 'login') {
+        
+        const resData = await response.json();
+        const token = resData.token;
+    
+        const decodedToken = jwt_decode(token);
+        console.log(decodedToken)
+        const { sub: username, userId } = decodedToken;
+    
+        localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('username', username);
+    
+        const expiration = new Date();
+        expiration.setHours(expiration.getHours() + 1);
+        localStorage.setItem('expiration', expiration.toISOString());
 
-    const decodedToken = jwt_decode(token);
-    console.log(decodedToken)
-    const { sub: username, userId } = decodedToken;
+    }
 
-    localStorage.setItem('token', token);
-    localStorage.setItem('userId', userId);
-    localStorage.setItem('username', username);
-
-    const expiration = new Date();
-    expiration.setHours(expiration.getHours() + 1);
-    localStorage.setItem('expiration', expiration.toISOString());
+  
 
     return redirect('/');
 }

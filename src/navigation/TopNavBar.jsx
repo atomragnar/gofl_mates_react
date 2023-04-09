@@ -40,23 +40,23 @@ export default function TopNavbar(props) {
         <>
             <SideBar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
             {sidebarOpen && <Backdrop toggleSidebar={toggleSidebar} />}
-            <Wrapper className="flexCenter animate gray100Bg radius8"
+            <Wrapper className="flexCenter1 animate whiteBg"
                 style={y > 100 ? { height: "60px" } : { height: "80px" }}>
 
-                <NavInner className="container flexSpaceCenter">
+                <NavInner className="container1 flexSpaceCenter1">
 
-                    <RouterLink to="/" smooth={true} className="pointer  flexNullCenter">
+                    <RouterLink to="/" smooth={true} className="pointer flexNullCenter1">
                         <LogoIcon />
-                        <h1 style={{ marginLeft: "15px" }} className="font15 extraBold">
+                        <h1 style={{ marginLeft: "15px" }} className="font20 extraBold">
                             Golf Mates
                         </h1>
                     </RouterLink>
 
 
                     {!token && (
-                        <UlWrapper className="flexNullCenter">
+                        <UlWrapper className="flexNullCenter1">
                             {leftSidePagesNoAuth.map((page, id) => (
-                                <li key={id} className="semiBold font15 pointer">
+                                <li key={id} className="semiBold font15 pointer1">
                                     <StyledRouterLink
                                         activeClass="active"
                                         activeClassName="active"
@@ -76,8 +76,9 @@ export default function TopNavbar(props) {
                     {token && (
                         <UlWrapper>
                             {leftSidePagesAuth.map((page, id) => (
-                                <StyledListItems key={id}>
+                                <li key={id} className="semiBold font15 pointer">
                                     <StyledRouterLink
+                                        activeClass="active"
                                         activeClassName="active"
                                         style={{ padding: "10px 15px" }}
                                         to={page.path}
@@ -87,7 +88,7 @@ export default function TopNavbar(props) {
                                     >
                                         {page.label}
                                     </StyledRouterLink>
-                                </StyledListItems>
+                                </li>
                             ))}
                         </UlWrapper>
                     )}
@@ -144,17 +145,11 @@ const UlWrapperRight = styled.ul`
   }
 `;
 
-const StyledListItems = styled.li`
-  color: #0b093b;
-  font-weight: 600 !important;
-  font-size: 0.938rem;
-  cursor: pointer;
-`;
 
 const StyledRouterLink = styled(RouterLink)`
   text-decoration: none !important;
   color: #0b093b;
-  font-size: 0.9rem;
+  font-size: 0.938rem;
     :active {
     border-bottom: 2px solid var(--color-gray-500);
     color: var(--color-gray-500);

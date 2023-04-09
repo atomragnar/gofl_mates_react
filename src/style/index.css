@@ -120,10 +120,10 @@ table {
 }
 a {
   text-decoration: none !important;
-  color: #0b093b;
+  color: #5b925e;
 }
 a:hover {
-  color: #7620ff;
+  color: #8797e2;
 }
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 50px #fff inset; /* Change the color to your own background color */
@@ -131,22 +131,23 @@ input:-webkit-autofill {
   -webkit-text-fill-color: #fff;
 }
 body {
-  background: #f4f5f4;
-  color: #02020c;
+  background: #fff;
+  color: #0b093b;
   font-family: "Khula", sans-serif;
   overflow-x: hidden;
   font-size: 16px;
   font-weight: 400;
-  margin-top: 90px;
 }
-.container {
+.container1 {
   width: 100%;
   max-width: 1220px;
   margin: 0 auto;
-  padding: 0px 30px;
+  padding: 0px 20px;
 }
+
+
 @media only screen and (max-width: 859px) {
-  .container {
+  .container1 {
     padding: 0 15px;
   }
 }
@@ -161,7 +162,7 @@ body {
 }
 
 /* HELLPERS */
-.textCenter {
+.textCenter1 {
   text-align: center;
 }
 .animate {
@@ -173,21 +174,21 @@ body {
 .relative {
   position: relative;
 }
-.textCenter {
+.textCenter1 {
   text-align: center;
 }
 .textLeft {
   text-align: left;
 }
-.textRight {
+.textRight1 {
   text-align: right;
 }
 .x100 {
   width: 100%;
 }
 .active {
-  border-bottom: 2px solid #7620ff;
-  color: #7620ff;
+  border-bottom: 2px solid #939cee;
+  color: #001aff;
 }
 .tag {
   padding: 5px 10px;
@@ -199,27 +200,27 @@ body {
   -moz-box-shadow: 0 0 11px rgba(237, 232, 237, 0.5);
 }
 /* FLEXBOX */
-.flex {
+.flex1 {
   display: flex;
 }
-.flexSpaceCenter {
+.flexSpaceCenter1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.flexNullCenter {
+.flexNullCenter1 {
   display: flex;
   align-items: center;
 }
-.flexColumn {
+.flexColumn1 {
   flex-direction: column;
 }
-.flexCenter {
+.flexCenter1 {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.flexSpaceNull {
+.flexSpaceNull1 {
   display: flex;
   justify-content: space-between;
 }
@@ -296,6 +297,7 @@ body {
 }
 /* BORDER RADIUS */
 .radius8 {
+  color: rgb(5, 26, 97);
   border-radius: 1rem;
 }
 .radius6 {
@@ -318,7 +320,7 @@ body {
   color: #c4ffff;
 }
 .greenColor {
-  color: #49cb86;
+  color: #14d870;
 }
 .greyColor {
   color: #707070;
@@ -326,9 +328,12 @@ body {
 .whiteColor {
   color: #fff;
 }
+.blueColor{
+  color:rgb(5, 31, 117)
+}
 /* BACKGROUNDS */
 .darkBg {
-  background-color: #0b093b;
+  background-color: #001aff;
 }
 .purpleBg {
   background-color: #7620ff;
@@ -337,7 +342,7 @@ body {
   background-color: #f2b300;
 }
 .lightBg {
-  background-color: #f5f5f5;
+  background-color: #cdddca;
 }
 .coralBg {
   background-color: #c4ffff;
@@ -350,45 +355,4 @@ body {
 }
 .whiteBg {
   background-color: #fff;
-}
-
-.golfGreenBg {
-  background-color: #047857;
-}
-
-gray100Bg {
-  background-color: #f4f3f1;
-}
-
-
-
-:root {
-  --color-white: #ffffff;
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f4f3f1;
-  --color-gray-200: #dddbd8;
-  --color-gray-300: #ccc9c6;
-  --color-gray-400: #aeaba7;
-  --color-gray-500: #8a8784;
-  --color-gray-600: #656360;
-  --color-gray-700: #4b4a47;
-  --color-gray-800: #31302e;
-  --color-gray-900: #1f1d1b;
-
-  --color-purple-100: #ede9fe;
-  --color-purple-200: #ddd6fe;
-  --color-purple-300: #c4b5fd;
-  --color-purple-400: #a78bfa;
-  --color-purple-500: #8b5cf6;
-  --color-purple-600: #7c3aed;
-
-  --color-yellow-100: #fcf3e1;
-  --color-yellow-200: #fceccd;
-  --color-yellow-300: #fae1af;
-  --color-yellow-400: #fbd997;
-  --color-yellow-500: #ffd37c;
-  --color-yellow-600: #f9c762;
-  --color-yellow-700: #fbc14d;
-  --color-yellow-800: #fab833;
-  --color-yellow-900: #f6ad1b;
 }

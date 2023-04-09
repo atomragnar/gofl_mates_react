@@ -3,41 +3,41 @@ import styled from "styled-components";
 import { Link } from "react-scroll";
 import LogoImg from "../assets/svg/Logo";
 
-export default function Contact() {
+export default function Footer() {
   const getCurrentYear = () => {
     return new Date().getFullYear();
   };
 
   return (
-    <Wrapper className=''>
-      <div className="darkBg">
-        <div className="container">
+    <Wrapper>
+      <div className="whiteBg">
+        <div className="container1">
           <InnerWrapper
-            className="flexSpaceCenter"
+            className="flexSpaceCenter1"
             style={{ padding: "30px 0" }}
           >
             <Link
-              className="flexCenter animate pointer"
+              className="flexCenter1 animate pointer"
               to="home"
               smooth={true}
               offset={-80}
             >
               <LogoImg />
               <h1
-                className="font15 extraBold whiteColor"
+                className="font15 extraBold"
                 style={{ marginLeft: "15px" }}
               >
                 Golf Mates
               </h1>
             </Link>
-            <StyleP className="whiteColor font13">
+            <StyleP className="font13">
               © {getCurrentYear()} -{" "}
-              <span className="purpleColor font13">Golf Mates</span> All Right
+              <span className="font13">Golf Mates</span> All Right
               Reserved
             </StyleP>
 
             <Link
-              className="whiteColor animate pointer font13"
+              className="greenColor animate pointer font30"
               to="home"
               smooth={true}
               offset={-80}

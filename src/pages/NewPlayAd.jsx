@@ -40,7 +40,6 @@ export const NewPlayAd = () => {
     };
 
     return (
-        <WrapperCard>
         <Grid
             container
             spacing={0}
@@ -63,13 +62,17 @@ export const NewPlayAd = () => {
                 endpoint="http://localhost:8085/api/golfclub/select/list"
                 label="Golfclub"
                 onChange={setGolfClubId}
+                filterKey='locationId'
+                filterValue={locationId}
             />
             </Grid>
             <Grid item xs={12}>
             <FilteredSelectComponent
                 endpoint="http://localhost:8085/api/course/select/list"
-                label="Course  "
+                label="Course"
                 onChange={setCourseId}
+                filterKey='golfClubId'
+                filterValue={golfClubId}
             />
             </Grid>
 
@@ -78,7 +81,6 @@ export const NewPlayAd = () => {
             >Submit</ColorButton>
         </form>
         </Grid>
-        </WrapperCard>
     )
 };
 

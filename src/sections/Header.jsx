@@ -5,11 +5,12 @@ import FullButton from "../components/buttons/FullButton";
 // Assets
 import HeaderImage from "../assets/img/header-img.png";
 import QuotesIcon from "../assets/svg/Quotes";
+import Dots from "../assets/svg/Dots";
 
 export default function Header() {
   return (
-    <Wrapper id="home" className="container flexSpaceCenter">
-      <LeftSide className="flexCenter">
+    <Wrapper id="home" className="container1 flexSpaceCenter1">
+      <LeftSide className="flexCenter1">
         <div>
           <h1 className="extraBold font60">Golf Mates</h1>
           <HeaderP className="font13 semiBold">
@@ -28,26 +29,29 @@ export default function Header() {
             alt="office"
             style={{ zIndex: 9 }}
           />
-          <QuoteWrapper className="flexCenter darkBg radius8">
+          <QuoteWrapper className="flexCenter1 darkBg radius8">
             <QuotesWrapper>
               <QuotesIcon />
             </QuotesWrapper>
             <div>
               <p className="font15 whiteColor">
                 <em>
-                  När jag tog grönt kort förra sommaren så ville jag hitta 1-2 nya kompisar att spela golf med. Tack vare Golf Mates så har jag nu, 1 år senare, 10 stycken att välja bland.
+                  När jag tog grönt kort förra sommaren så ville jag hitta 1-2 nya kompisar att spela golf med. Tack vare Golf Mates så har jag nu 10 stycken att välja bland.
                 </em>
               </p>
               <p
-                className="font13 orangeColor textRight"
+                className="font13 orangeColor textRight1"
                 style={{ marginTop: "10px" }}
               >
                 Pelle
               </p>
             </div>
           </QuoteWrapper>
+          <DotsWrapper>
+            <Dots />
+          </DotsWrapper>
         </ImageWrapper>
-       {/* <GreyDiv className="lightBg"></GreyDiv>*/}
+        <GreyDiv className="lightBg"></GreyDiv>
       </RightSide>
     </Wrapper>
   );
