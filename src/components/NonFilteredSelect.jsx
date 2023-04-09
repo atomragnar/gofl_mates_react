@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {useRouteLoaderData} from "react-router-dom";
+import {InputLabel, Select, MenuItem} from "@mui/material";
 
 export const SelectComponent = ({ endpoint, label, onChange }) => {
 
@@ -34,16 +35,17 @@ export const SelectComponent = ({ endpoint, label, onChange }) => {
 
     return (
         <div>
-            <label>
+            <InputLabel>
                 {label}:
-                <select value={selectedOption} onChange={handleSelectChange}>
+                <Select value={selectedOption} onChange={handleSelectChange}
+                        style={{minWidth: '20vh', margin: '10px'}}>
                     {options.map((option) => (
-                        <option key={option.id} value={option.id}>
+                        <MenuItem key={option.id} value={option.id}>
                             {option.label}
-                        </option>
+                        </MenuItem>
                     ))}
-                </select>
-            </label>
+                </Select>
+            </InputLabel>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {PlayAdsCard} from "./PlayAdsCard";
-import {Box, Input, List, ListItem, Pagination} from "@mui/material";
+import {Box, Input, List, ListItem, Pagination, Grid, Item, Divider, Card} from "@mui/material";
 
 export const PlayAdsList = ({playAds}) => {
 
@@ -19,7 +19,7 @@ export const PlayAdsList = ({playAds}) => {
         );
     }
 
-    const playAdsPerPage = 10;
+    const playAdsPerPage = 9;
     const totalPages = Math.ceil(filterPlayAds().length / playAdsPerPage);
 
     function filteredPlayAds() {
@@ -49,27 +49,31 @@ export const PlayAdsList = ({playAds}) => {
     }
 
     return (
-        <Box display="flex" flexDirection="column" alignItems="center" m={4}>
-            <Box mb={4}>
+        <>
+            <Grid xs={12} spacing={{ xs: 1, md: 2 }}>
             <Input
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={handleSearchQueryChange}
             />
-            </Box>
-            <List>
+            </Grid>
+            <Divider/>
+            <Grid container spacing={{ xs: 1, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {filteredPlayAds().map((playAd) => (
-                    <ListItem key={playAd.playAdId}>
-                        <PlayAdsCard booking={playAd}/>
-                    </ListItem>
+                    <Grid item xs={2} sm={4} md={4}>
+                        <PlayAdsCard booking={playAd} key={playAd.playAdId}/>
+                    </Grid>
                 ))}
-            </List>
+            </Grid>
+            <Divider/>
+            <Grid item xs={12}>
             <Pagination
                 count={totalPages}
                 page={currentPage}
                 onChange={handlePageChange}
                 color="secondary"
             />
-        </Box>
+            </Grid>
+    </>
     );
 }

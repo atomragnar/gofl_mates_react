@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {getAuthToken} from "../util/Auth";
+import {InputLabel, Select, MenuItem} from "@mui/material";
 
 export const FilteredSelectComponent = ({ endpoint, label, onChange, filterValue, filterKey }) => {
 
@@ -41,16 +42,17 @@ export const FilteredSelectComponent = ({ endpoint, label, onChange, filterValue
 
     return (
         <div>
-            <label>
+            <InputLabel>
                 {label}:
-                <select value={selectedOption} onChange={handleSelectChange}>
+                <Select value={selectedOption} onChange={handleSelectChange}
+                        style={{minWidth: '20vh', margin: '10px'}}>
                     {options.map((option) => (
-                        <option key={option.id} value={option.id}>
+                        <MenuItem key={option.id} value={option.id}>
                             {option.label}
-                        </option>
+                        </MenuItem>
                     ))}
-                </select>
-            </label>
+                </Select>
+            </InputLabel>
         </div>
     );
 }

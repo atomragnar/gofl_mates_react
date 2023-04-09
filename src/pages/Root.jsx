@@ -29,9 +29,9 @@ function RootLayout() {
     return (
         <>
             <TopNavbar/>
-            <Center>
+            <main>
             <Outlet/>
-            </Center>
+            </main>
         </>
     );
 }
@@ -43,6 +43,7 @@ function Center(props){
         <div style={{
             display: 'flex',
             justifyContent: 'center',
+            alignContent: 'center',
             height: '100vh'
         }}>
             {props.children}

@@ -3,19 +3,25 @@ import styled from "styled-components";
 import React from "react";
 import {ProfileRootLayout} from "../../pages/ProfileRoot";
 import {ProfileNavigation} from "../ProfileNavigation";
+import {Grid} from "@mui/material";
 
 export const ProfileContainer = ({children}) => {
 
     const getIcon = <Player/>
 
     return (
+        <Grid
+            container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+            style={{minHeight: '100vh'}}
+        >
         <Wrapper className="whiteBg radius8 shadow">
-            <div className="flexSpaceCenter">
+            <div>
                 {getIcon}
 
-            </div>
-            <div className="flexCenter">
-                <ProfileNavigation/>
             </div>
 
             {children}
@@ -23,6 +29,7 @@ export const ProfileContainer = ({children}) => {
             {/*    <FullButton title="Köp" action={action} />*/}
             {/*</div>*/}
         </Wrapper>
+        </Grid>
     );
 }
 
