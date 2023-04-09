@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {getAuthToken, getUserId} from "../../util/auth";
+import {getAuthToken, getUserId} from "../../util/Auth";
 import {BookingsCard} from "../booking/BookingsCard";
 
 function UsersBookingsList() {

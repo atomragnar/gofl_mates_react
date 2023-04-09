@@ -10,7 +10,7 @@ import {getAuthToken} from "../../util/Auth";
 import {SelectComponent} from "../NonFilteredSelect";
 import {FilteredSelectComponent} from "../FilteredSelectComponent";
 
-export const PlayAdForm = ({ method, playAd }) => function EventForm({ method, playAd }) {
+export const PlayAdForm = ({ method, playAd }) => function PlayAdForm({ method, playAd }) {
     const data = useActionData();
     const navigate = useNavigate();
     const navigation = useNavigation();

@@ -1,10 +1,12 @@
 import classes from './BookingsNavigation.module.css'
 import {NavLink, useRouteLoaderData} from "react-router-dom";
+import WrapperCard from './ui/WrapperCard';
 
 export const BookingsNavigation = () => {
     const token = useRouteLoaderData('root');
 
     return (
+        <WrapperCard>
         <header className={classes.header}>
             <nav>
                 <ul className={classes.list}>
@@ -34,5 +36,6 @@ export const BookingsNavigation = () => {
                 </ul>
             </nav>
         </header>
+        </WrapperCard>
     );
 }

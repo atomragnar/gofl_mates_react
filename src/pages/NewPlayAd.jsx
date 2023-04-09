@@ -5,6 +5,7 @@ import {useState} from "react";
 import {Card, CardContent, Grid, FormControl, Button} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import {purple} from "@mui/material/colors";
+import WrapperCard from "../components/ui/WrapperCard";
 
 export const NewPlayAd = () => {
     const [locationId, setLocationId] = useState("");
@@ -39,6 +40,7 @@ export const NewPlayAd = () => {
     };
 
     return (
+        <WrapperCard>
         <Grid
             container
             spacing={0}
@@ -49,12 +51,6 @@ export const NewPlayAd = () => {
         >
 
         <form onSubmit={handleSubmit}>
-            <Grid item xs={12}>
-            <DatePicker
-                value={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-            />
-            </Grid>
             <Grid item xs={12}>
             <SelectComponent
                 endpoint="http://localhost:8085/api/location/select/list"
@@ -82,6 +78,7 @@ export const NewPlayAd = () => {
             >Submit</ColorButton>
         </form>
         </Grid>
+        </WrapperCard>
     )
 };
 

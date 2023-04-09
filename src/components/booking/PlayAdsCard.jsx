@@ -1,4 +1,5 @@
 import myImage from "../../assets/img/deep-thought.jpg";
+import myImage2 from "../../assets/img/Golf-Ball-Near-the-Hole-450x450.jpg"
 import styled from "styled-components";
 
 export const PlayAdsCard = (props) => {
@@ -8,7 +9,7 @@ export const PlayAdsCard = (props) => {
         <>
             <Card>
                 <CardCover>
-                    <CardCoverImg src={myImage} alt="picture of deep thought"/>
+                    <CardCoverImg src={myImage2} alt="picture of deep thought"/>
                 </CardCover>
                 <CardContentContent>
                     <CardContentTitle>
@@ -37,8 +38,8 @@ export const PlayAdsCard = (props) => {
 
 
 const Card = styled.div`
-  height: 12rem;
-  width: 25rem;
+  height: 13rem;
+  width: 26rem;
   display: flex;
   background: #ffffff;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -79,8 +80,8 @@ const CardContentContent = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding: 1.5rem;
-  margin-top: 1rem;
+  margin-left: 10%;
+  margin-top: 2%;
   `;
 
 const CardContentButton = styled.button`

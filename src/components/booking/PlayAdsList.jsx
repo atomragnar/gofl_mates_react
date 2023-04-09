@@ -58,9 +58,9 @@ export const PlayAdsList = ({playAds}) => {
             />
             </Grid>
             <Divider/>
-            <Grid container spacing={{ xs: 1, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {filteredPlayAds().map((playAd) => (
-                    <Grid item xs={2} sm={4} md={4}>
+                    <Grid item xs={4}>
                         <PlayAdsCard booking={playAd} key={playAd.playAdId}/>
                     </Grid>
                 ))}

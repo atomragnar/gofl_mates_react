@@ -1,5 +1,5 @@
 import React from 'react';
-import {getAuthToken} from "../../util/auth";
+import {getAuthToken} from "../../util/Auth";
 
 function RequestToJoinButtonAction({playAdId, userId}) {
 

@@ -15,6 +15,8 @@ import {ProfileRootLayout} from "./pages/ProfileRoot";
 import {BookingsRootLayout} from "./pages/BookingsRoot";
 import {AllUsersSearch} from "./pages/AllUsersSearch";
 import {UserProfileCard} from "./components/user/ProfileCard";
+import TestNewPlayAdForm from './pages/TestNewPlayAdForm';
+import UsersRequestsToList from './components/user/UsersRequestsToList';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,7 @@ const router = createBrowserRouter([
               },
               {
                 path: 'requests',
+                element: <UsersRequestsToList/>,
               },
               {
                 path: 'my-requests',

@@ -5,8 +5,7 @@ export const ProfileNavigation = () => {
     const token = useRouteLoaderData('root');
 
     return (
-        <header className={classes.header}>
-            <nav>
+    
                 <ul className={classes.list}>
                     {token && (
                         <li>
@@ -81,8 +80,7 @@ export const ProfileNavigation = () => {
                             </NavLink>
                         </li>
                     )}
-                </ul>
-            </nav>
-        </header>
+               </ul>
+        
     );
 }

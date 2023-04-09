@@ -16,7 +16,7 @@ export const BookingsRootLayout = () => {
             <Grid xs={12}>
                 <BookingsNavigation/>
             </Grid>
-            <Card sx={{minWidth: 275}} variant="outlined">
+            {/* <Card sx={{minWidth: 275}} variant="outlined"> */}
                 <Grid
                     container
                     spacing={0}
@@ -27,7 +27,7 @@ export const BookingsRootLayout = () => {
                 >
                 <Outlet/>
                 </Grid>
-            </Card>
+            {/* </Card> */}
         </Grid>
 
     )

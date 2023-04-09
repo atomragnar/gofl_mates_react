@@ -1,6 +1,7 @@
 import {getAuthToken} from "../util/Auth";
 import {useEffect, useState} from "react";
-import {Box, Input, List, ListItem, Typography, Pagination} from "@mui/material";
+import styled from 'styled-components';
+import {Box, Input, List, ListItem, Typography, Pagination, Card, CardContent, CardActions, Button} from "@mui/material";
 
 export const AllUsersSearch = () => {
 
@@ -77,7 +78,19 @@ export const AllUsersSearch = () => {
                     .slice((currentPage - 1) * usersPerPage, currentPage * usersPerPage)
                     .map((user) => (
                         <ListItem key={user.id}>
-                            <Typography>{user.username} - {user.location} - {user.golfClub} - {user.handicap}</Typography>
+                            <CardWrapper>
+                            <CardContentWrapper>
+                            <Typography variant="h5" component="h2">
+                            {user.username}
+                            </Typography>
+                            <Typography color="textSecondary">
+                            {user.location} - {user.golfClub} - {user.handicap}
+                            </Typography>
+                            </CardContentWrapper>
+                            <CardActionsWrapper>
+                            <Button size="small">Button</Button>
+                            </CardActionsWrapper>
+                            </CardWrapper>
                         </ListItem>
                     ))}
             </List>
@@ -92,3 +105,23 @@ export const AllUsersSearch = () => {
         </Box>
     );
 };
+
+
+const CardWrapper = styled(Card)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1px;
+`;
+
+const CardContentWrapper = styled(CardContent)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const CardActionsWrapper = styled(CardActions)`
+  align-self: flex-start;
+  margin-left: 1px;
+`;

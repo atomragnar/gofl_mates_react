@@ -1,4 +1,4 @@
-import {getAuthToken} from "../../util/auth";
+import {getAuthToken} from "../util/auth";
 import React from "react";
 
 function DeleteBookingAction(playAdId) {

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import {getAuthToken, getUserId} from "../../util/auth";
-import {BookingsCard} from "../booking/BookingsCard";
+import {getAuthToken, getUserId} from "../../util/Auth";
 import RequestButton from "./RequestButton";
+import ListComponent from "./CardsList";
 
-export default function UsersBookingsList() {
-    const [playAdRequests, setplayAdRequests] = useState([]);
+export default function UsersRequestsToList() {
+    const [playAdRequests, setPlayAdRequests] = useState([]);
 
     const userId = getUserId();
     const token = getAuthToken();
@@ -19,7 +19,7 @@ export default function UsersBookingsList() {
                     }
                 });
                 const data = await response.json();
-                setplayAdRequests(data);
+                setPlayAdRequests(data);
             } catch (error) {
                 console.log(error);
             }
@@ -28,7 +28,7 @@ export default function UsersBookingsList() {
         fetchRequests();
     }, []);
 
-    return (
+    return <ListComponent playAdRequests={playAdRequests} /> /* (
         <div>
             <ul>
                 {playAdRequests.map((request) => (
@@ -46,5 +46,5 @@ export default function UsersBookingsList() {
                 ))}
             </ul>
         </div>
-    );
+    ); */
 }
