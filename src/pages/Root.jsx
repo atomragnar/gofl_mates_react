@@ -3,6 +3,7 @@ import {Outlet, useLoaderData, useSubmit} from 'react-router-dom';
 
 import {getTokenDuration} from '../util/Auth';
 import TopNavbar from "../navigation/TopNavBar";
+import Footer from "../sections/Footer";
 
 function RootLayout() {
     const token = useLoaderData();
