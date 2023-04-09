@@ -55,9 +55,9 @@ function AuthForm() {
                         <Link to={`?mode=${isLogin ? 'signup' : 'login'}`} className="font13">
                             {isLogin ? 'Om du inte har ett konto tryck här för att skapa nytt konto' : 'Om du redan har ett konto logga in här'}
                         </Link>
-                        <StyledButton disabled={isSubmitting}>
+                        <button disabled={isSubmitting}>
                             {isSubmitting ? 'Submitting...' : isLogin ? 'Logga in' : 'Skapa konto'}
-                        </StyledButton>
+                        </button>
                     </div>
                 </StyledForm>
             </ProfileContainer>
