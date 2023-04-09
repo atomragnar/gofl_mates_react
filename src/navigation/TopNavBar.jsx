@@ -40,7 +40,7 @@ export default function TopNavbar(props) {
         <>
             <SideBar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
             {sidebarOpen && <Backdrop toggleSidebar={toggleSidebar} />}
-            <Wrapper className="flexCenter animate whiteBg"
+            <Wrapper className="flexCenter animate gray100Bg radius8"
                 style={y > 100 ? { height: "60px" } : { height: "80px" }}>
 
                 <NavInner className="container flexSpaceCenter">

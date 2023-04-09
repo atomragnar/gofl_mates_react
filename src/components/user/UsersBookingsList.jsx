@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import {getAuthToken, getUserId} from "../../util/Auth";
-import {BookingsCard} from "../booking/BookingsCard";
+import {PlayAdsCard} from "../booking/PlayAdsCard";
 
 function UsersBookingsList() {
     const [bookings, setBookings] = useState([]);
@@ -32,7 +32,7 @@ function UsersBookingsList() {
             <ul>
                 {bookings.map((booking) => (
                     <li key={booking.playAdId}>
-                    <BookingsCard booking={booking} />
+                    <PlayAdsCard booking={booking} />
                     </li>
                 ))}
             </ul>

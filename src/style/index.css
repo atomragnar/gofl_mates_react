@@ -131,8 +131,8 @@ input:-webkit-autofill {
   -webkit-text-fill-color: #fff;
 }
 body {
-  background: #fff;
-  color: #0b093b;
+  background: #f4f5f4;
+  color: #02020c;
   font-family: "Khula", sans-serif;
   overflow-x: hidden;
   font-size: 16px;
@@ -350,6 +350,14 @@ body {
 }
 .whiteBg {
   background-color: #fff;
+}
+
+.golfGreenBg {
+  background-color: #047857;
+}
+
+gray100Bg {
+  background-color: #f4f3f1;
 }
 
 

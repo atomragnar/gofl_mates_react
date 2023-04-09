@@ -17,6 +17,9 @@ import {AllUsersSearch} from "./pages/AllUsersSearch";
 import {UserProfileCard} from "./components/user/ProfileCard";
 import TestNewPlayAdForm from './pages/TestNewPlayAdForm';
 import UsersRequestsToList from './components/user/UsersRequestsToList';
+import BookingRequestsByUser from './components/user/BookingRequestsByUser';
+import UsersCreatedPlayAds from './components/user/UsersCreatedPlayAds';
+import UsersBookingsList from './components/user/UsersBookingsList';
 
 const router = createBrowserRouter([
   {
@@ -41,9 +44,11 @@ const router = createBrowserRouter([
             children: [
               {
                 index: true,
+                element: <UsersBookingsList/>
               },
               {
                 path: 'my-bookings',
+                element: <UsersCreatedPlayAds/>
               },
               {
                 path: 'requests',
@@ -51,6 +56,7 @@ const router = createBrowserRouter([
               },
               {
                 path: 'my-requests',
+                element: <BookingRequestsByUser/>,
               },
               {
                 path: 'edit',

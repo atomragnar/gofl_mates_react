@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import {getAuthToken, getUserId} from "../../util/auth";
-import {BookingsCard} from "../booking/BookingsCard";
-import RequestButton from "./RequestButton";
+import {getAuthToken, getUserId} from "../../util/Auth";
+import styled from 'styled-components';
+import { Card, CardContent, CardActions, Button, Typography, List, ListItem, ListItemText } from '@mui/material';
 
 export default function BookingRequestsByUser() {
     const [playAdRequests, setplayAdRequests] = useState([]);
@@ -29,14 +29,46 @@ export default function BookingRequestsByUser() {
     }, []);
 
     return (
-        <div>
-            <ul>
+  
+            <List>
                 {playAdRequests.map((request) => (
-                    <li key={request.playAdRequestId}>
-                        {request.requester} - {request.requesterHandicap} - {request.status} - {request.requestCreatedTime}
-                    </li>
+                    <ListItem key={request.playAdRequestId}>
+                         <CardWrapper>
+                        <CardContentWrapper>
+                        <Typography variant="h5" component="h2">
+                                Förfrågan på spelannons #{request.playAdId}
+                            </Typography>
+                            <Typography color="textSecondary">
+                                Förfrågan skapades: {request.requestCreatedTime}
+                            </Typography>
+                            <Typography color="textSecondary">
+                                Status på förfrågan: {request.status}
+                            </Typography>
+                        </CardContentWrapper>
+                        </CardWrapper>
+                    </ListItem>
                 ))}
-            </ul>
-        </div>
+            </List>
+    
     );
 }
+
+
+const CardWrapper = styled(Card)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1px;
+`;
+
+const CardContentWrapper = styled(CardContent)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const CardActionsWrapper = styled(CardActions)`
+  align-self: flex-start;
+  margin-left: 1px;
+`;
