@@ -5,6 +5,9 @@ import React from "react";
 import {DeleteBookingButton} from "./DeleteBookingButton";
 
 export const PlayAdsCardUserCreatedAd = ({playAd, handleDelete}) => {
+
+    console.log(handleDelete)
+
     return (
         <Wrapper2 className="whiteBg radius8 shadow">
                 <ImageContainer2 >
@@ -48,7 +51,7 @@ export const PlayAdsCardUserCreatedAd = ({playAd, handleDelete}) => {
                     style={{marginLeft: '20px', marginBottom: '30px', marginTop: '20px'}}
                 >
                 <DeleteBookingButton
-                playadId={playAd.playAdId}
+                playAd={playAd}
                 handleDelete={handleDelete}
                 />
                 </div>

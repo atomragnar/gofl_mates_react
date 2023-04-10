@@ -28,6 +28,42 @@ function UsersBookingsList() {
         fetchPlayAds();
     }, [token, userId]);
 
+
+    async function handleRemoveBooking(removeId) {
+        const userId = getUserId();
+
+        const options = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                playAdId: removeId,
+                userId: parseInt(userId)
+            })
+        };
+
+        fetch(`http://localhost:8085/api/playad/remove`, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('booking was ok!', data);
+                const updatedPlayAds = playAds.filter(ad => ad.playAdId !== removeId);
+                setPlayAds(updatedPlayAds);
+            })
+            .catch(error => {
+                console.error('Fel vid bokning', error);
+            });
+
+    }
+
+
+
     return (
         <div>
             <ul>
@@ -35,6 +71,7 @@ function UsersBookingsList() {
                     <li key={playAd.playAdId}>
                     <PlayAdCardUserBookedAd
                     playAd={playAd}
+                    handleRemoveBooking={handleRemoveBooking}
                     />
                     </li>
                 ))}

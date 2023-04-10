@@ -1,12 +1,11 @@
 import myImage from "../../assets/img/large-open-air-course-with-golf-stick-and-ball-web-header.jpg";
 import {Avatar} from "@mui/material";
-import {DeleteBookingButton} from "./DeleteBookingButton";
 import styled from "styled-components";
 import React from "react";
 import {UnBookSlotButton} from "./UnBookSlotButton";
 import {getUserId, getUsername} from "../../util/Auth";
 
-export const PlayAdCardUserBookedAd = ({playAd}) => {
+export const PlayAdCardUserBookedAd = ({playAd, handleRemoveBooking}) => {
 
     const userId = getUserId();
     const currentUserUsername = getUsername();
@@ -58,7 +57,7 @@ export const PlayAdCardUserBookedAd = ({playAd}) => {
                 >
                 <UnBookSlotButton
                 playAdId={playAd.playAdId}
-                userId={userId}
+                handleRemoveBookin={handleRemoveBooking}
                 />
                 </div>
             </LowerContainer2>

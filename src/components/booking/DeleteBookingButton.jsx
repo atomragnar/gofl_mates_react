@@ -2,13 +2,19 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 
-export const DeleteBookingButton = ({ playAdId, handleDelete }) => {
+export const DeleteBookingButton = ({playAd, handleDelete }) => {
+
+    console.log(handleDelete)
+    console.log(playAd.playAdId)
+
 
     const [isLoading, setIsLoading] = useState(false);
     const [open, setOpen] = useState(false);
 
 
     async function handleConfirm() {
+
+        console.log(playAd.playAdId)
 
         setIsLoading(true);
 
@@ -17,7 +23,8 @@ export const DeleteBookingButton = ({ playAdId, handleDelete }) => {
         //if (proceed) {
 
             try {
-                handleDelete(playAdId);
+                handleDelete(playAd.playAdId);
+                console.log(playAd.playAdId)
             } catch (error) {
                 console.log(error);
             }

@@ -28,7 +28,10 @@ function UsersCreatedPlayAds() {
         fetchPlayAds();
     }, [token, userId]);
 
-    const handleDelete = async (deletedId) => {
+    async function handleDelete(deletedId){
+
+        console.log(deletedId)
+
         try {
             const response = await fetch(`http://localhost:8085/api/playad/${deletedId}`, {
                 method: 'DELETE',
