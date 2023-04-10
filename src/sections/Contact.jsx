@@ -114,7 +114,7 @@ const Form = styled.form`
 `;
 const ButtonInput = styled.input`
   border: 1px solid #7620ff;
-  background-color: #001aff;
+  background-color: #7620ff;
   width: 100%;
   padding: 15px;
   outline: none;

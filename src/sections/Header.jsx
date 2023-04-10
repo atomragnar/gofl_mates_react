@@ -29,7 +29,7 @@ export default function Header() {
             alt="office"
             style={{ zIndex: 9 }}
           />
-          <QuoteWrapper className="flexCenter1 darkBg radius8">
+          <QuoteWrapper className="flexCenter1 purpleBg radius8">
             <QuotesWrapper>
               <QuotesIcon />
             </QuotesWrapper>

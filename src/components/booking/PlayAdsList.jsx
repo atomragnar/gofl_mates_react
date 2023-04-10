@@ -1,6 +1,6 @@
 import {useState} from "react";
-import {PlayAdsCard} from "./PlayAdsCard";
 import {Box, Input, List, ListItem, Pagination, Grid, Item, Divider, Card} from "@mui/material";
+import {RemadePlayAdCard} from "./RemadePlayAdCard";
 
 export const PlayAdsList = ({playAds}) => {
 
@@ -63,7 +63,7 @@ export const PlayAdsList = ({playAds}) => {
                   alignItems="center">
                 {filteredPlayAds().map((playAd) => (
                     <Grid >
-                        <PlayAdsCard booking={playAd} key={playAd.playAdId}/>
+                        <RemadePlayAdCard playAd={playAd} key={playAd.playAdId}/>
                     </Grid>
                 ))}
             </Grid>

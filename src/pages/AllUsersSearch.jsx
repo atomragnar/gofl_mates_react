@@ -2,6 +2,7 @@ import {getAuthToken} from "../util/Auth";
 import {useEffect, useState} from "react";
 import styled from 'styled-components';
 import {Box, Input, List, ListItem, Typography, Pagination, Card, CardContent, CardActions, Button} from "@mui/material";
+import {OtherUsersProfileCard} from "../components/OtherUsersProfileCard";
 
 export const AllUsersSearch = () => {
 
@@ -78,7 +79,10 @@ export const AllUsersSearch = () => {
                     .slice((currentPage - 1) * usersPerPage, currentPage * usersPerPage)
                     .map((user) => (
                         <ListItem key={user.id}>
-                            <CardWrapper>
+                            <OtherUsersProfileCard
+                            user={user}
+                            />
+                            {/*<CardWrapper>
                             <CardContentWrapper>
                             <Typography variant="h5" component="h2">
                             {user.username}
@@ -90,7 +94,7 @@ export const AllUsersSearch = () => {
                             <CardActionsWrapper>
                             <Button size="small">Button</Button>
                             </CardActionsWrapper>
-                            </CardWrapper>
+                            </CardWrapper>*/}
                         </ListItem>
                     ))}
             </List>

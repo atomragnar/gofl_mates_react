@@ -68,18 +68,6 @@ function AuthForm() {
 export default AuthForm;
 
 
-const StyledButton = styled.button`
-  border: 0px;
-  outline: none;
-  background-color: #939cee;
-  color: #7620ff;
-  :hover {
-    opacity: 0.5;
-  }
-`
-
-
-
 const StyledForm = styled(Form)`
   padding: 70px 0 30px 0;
   input,

@@ -1,42 +1,64 @@
-import {getAuthToken} from "../util/auth";
-import React from "react";
+import React, {useState} from "react";
+import styled from "styled-components";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 
-function DeleteBookingAction(playAdId) {
+export const DeleteBookingButton = ({ playAdId, handleDelete }) => {
 
-    const token = getAuthToken();
+    const [isLoading, setIsLoading] = useState(false);
+    const [open, setOpen] = useState(false);
 
-    const proceed = window.confirm('Är du säker?');
 
-    if (proceed) {
+    async function handleConfirm() {
 
-        const header = {
-            method: 'DELETE',
-            headers: {
-                'Authorization': 'Bearer ' + token
+        setIsLoading(true);
+
+       // const proceed = window.confirm('Är säker du på att du vill tabort annonsen?');
+
+        //if (proceed) {
+
+            try {
+                handleDelete(playAdId);
+            } catch (error) {
+                console.log(error);
             }
-        };
 
-        fetch(`http://localhost:8085/api/playadrequest`, header)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('booking was ok!', data);
-            })
-            .catch(error => {
-                console.error('Fel vid bokning', error);
-            });
+        //}
+
+        setIsLoading(false);
     }
 
-}
-
-
-export const DeleteBookingButton = (playAdId) => {
-
     return (
-        <button onClick={() => DeleteBookingAction(playAdId)}>Tabort</button>
+        <>
+        <StyledBtn onClick={() => setOpen(true)}>
+            {isLoading ? 'Laddar...' : 'Ta bort speltid'}
+        </StyledBtn>
+
+            <Dialog open={open} onClose={() => setOpen(false)}>
+                <DialogTitle>Är du säker?</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>Är du säker på att du vill ta bort denna speltid?</DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setOpen(false)}>Avbryt</Button>
+                    <Button onClick={handleConfirm} variant="contained" color="secondary" autoFocus>
+                        Ta bort
+                    </Button>
+                </DialogActions>
+            </Dialog>
+
+
+        </>
     );
 }
+
+const StyledBtn = styled.button`
+  border: 0px;
+  width: 100px;
+  height: 30px;
+  outline: none;
+  background-color: #ef4444;
+  :hover {
+    opacity: 0.5;
+  }
+`;
+

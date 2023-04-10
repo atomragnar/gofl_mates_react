@@ -60,7 +60,6 @@ const Card = styled.div`
 
 const UpperContainer = styled.div`
   height: 100px;
-  background: linear-gradient(to left, rgb(207, 207, 207), rgb(81, 82, 82));
 `;
 
 

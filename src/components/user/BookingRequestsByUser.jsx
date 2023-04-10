@@ -37,19 +37,6 @@ export default function BookingRequestsByUser() {
                         <UsersOwnRequestsCard
                         request={request}
                         />
-                         {/*<CardWrapper>
-                        <CardContentWrapper>
-                        <Typography variant="h5" component="h2">
-                                Förfrågan på spelannons #{request.playAdId}
-                            </Typography>
-                            <Typography color="textSecondary">
-                                Förfrågan skapades: {request.requestCreatedTime}
-                            </Typography>
-                            <Typography color="textSecondary">
-                                Status på förfrågan: {request.status}
-                            </Typography>
-                        </CardContentWrapper>
-                        </CardWrapper>*/}
                     </ListItem>
                 ))}
             </List>

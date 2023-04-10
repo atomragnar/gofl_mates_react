@@ -120,7 +120,7 @@ table {
 }
 a {
   text-decoration: none !important;
-  color: #5b925e;
+  color: #0b093b;
 }
 a:hover {
   color: #8797e2;
@@ -342,7 +342,7 @@ body {
   background-color: #f2b300;
 }
 .lightBg {
-  background-color: #cdddca;
+  background-color: #f3f4f6;
 }
 .coralBg {
   background-color: #c4ffff;

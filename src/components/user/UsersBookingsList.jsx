@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import {getAuthToken, getUserId} from "../../util/Auth";
 import {PlayAdsCard} from "../booking/PlayAdsCard";
+import {PlayAdCardUserBookedAd} from "../booking/PlayAdCardUserBookedAd";
 
 function UsersBookingsList() {
-    const [bookings, setBookings] = useState([]);
+    const [playAds, setPlayAds] = useState([]);
 
     const userId = getUserId();
     const token = getAuthToken();
 
     useEffect(() => {
-        const fetchBookings = async () => {
+        const fetchPlayAds = async () => {
             try {
                 const response = await fetch(`http://localhost:8085/api/playad/booked/${userId}`, {
                     method: 'GET',
@@ -18,21 +19,23 @@ function UsersBookingsList() {
                     }
                 });
                 const data = await response.json();
-                setBookings(data);
+                setPlayAds(data);
             } catch (error) {
                 console.log(error);
             }
         };
 
-        fetchBookings();
-    }, []);
+        fetchPlayAds();
+    }, [token, userId]);
 
     return (
         <div>
             <ul>
-                {bookings.map((booking) => (
-                    <li key={booking.playAdId}>
-                    <PlayAdsCard booking={booking} />
+                {playAds.map((playAd) => (
+                    <li key={playAd.playAdId}>
+                    <PlayAdCardUserBookedAd
+                    playAd={playAd}
+                    />
                     </li>
                 ))}
             </ul>
