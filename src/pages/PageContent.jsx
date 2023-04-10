@@ -16,5 +16,5 @@ const Wrapper = styled.div`
   height: 70%;
   margin-left: 20%;
   padding: 20px 30px;
-  margin-top: 100px;
+  margin-top: 70px;
 `;

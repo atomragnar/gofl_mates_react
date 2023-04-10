@@ -16,12 +16,11 @@ export const ProfileContainer = ({children}) => {
             direction="column"
             alignItems="center"
             justifyContent="center"
-            style={{minHeight: '100vh'}}
+            style={{minHeight: '50vh'}}
         >
         <Wrapper className="whiteBg radius8 shadow">
             <div>
                 {getIcon}
-
             </div>
 
             {children}
@@ -38,6 +37,6 @@ const Wrapper = styled.div`
   height: 70%;
   text-align: left;
   padding: 20px 30px;
-  margin-top: 30px;
+  margin-top: 100px;
 `;
 

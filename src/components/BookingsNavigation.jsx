@@ -1,6 +1,9 @@
 import classes from './BookingsNavigation.module.css'
 import {NavLink, useRouteLoaderData} from "react-router-dom";
 import styled from "styled-components";
+import {Add as AddIcon} from "@mui/icons-material";
+import {Fab} from "@mui/material";
+import React from "react";
 
 export const BookingsNavigation = () => {
     const token = useRouteLoaderData('root');
@@ -38,7 +41,9 @@ export const BookingsNavigation = () => {
                                 smooth={true}
                                 offset={-80}
                             >
-                                Ny Bokning
+                                <Fab color="secondary" onClick={() => alert('clicked')}>
+                                    <AddIcon/>
+                                </Fab>
                             </NavLink>
                         </li>
                     )}

@@ -34,11 +34,15 @@ export const SelectComponent = ({ endpoint, label, onChange }) => {
 
 
     return (
-        <div>
-            <InputLabel>
+            <InputLabel
+                style={{
+                    display: 'block',
+                    font: 'inherit'}}>
                 {label}:
                 <Select value={selectedOption} onChange={handleSelectChange}
-                        style={{minWidth: '20vh', margin: '10px'}}>
+                        style={{width: '100%',
+                            display: 'block',
+                            font: 'inherit'}}>
                     {options.map((option) => (
                         <MenuItem key={option.id} value={option.id}>
                             {option.label}
@@ -46,6 +50,5 @@ export const SelectComponent = ({ endpoint, label, onChange }) => {
                     ))}
                 </Select>
             </InputLabel>
-        </div>
     );
 }

@@ -13,7 +13,7 @@ export const ProfileRootLayout = () => {
             direction="column"
             alignItems="center"
             justifyContent="center"
-            style={{minHeight: '100vh'}}
+            style={{minHeight: '60vh'}}
         >
             <Grid xs={12}>
                 <ProfileNavigation/>
@@ -24,7 +24,7 @@ export const ProfileRootLayout = () => {
                 direction="column"
                 alignItems="center"
                 justifyContent="center"
-                style={{minHeight: '100vh'}}
+                style={{minHeight: '60vh'}}
             >
                 <Outlet/>
             </Grid>

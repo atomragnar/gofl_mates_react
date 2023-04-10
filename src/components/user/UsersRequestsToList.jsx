@@ -26,25 +26,16 @@ export default function UsersRequestsToList() {
         };
 
         fetchRequests();
-    }, []);
+    }, [token, userId]);
 
-    return <ListComponent playAdRequests={playAdRequests} /> /* (
-        <div>
-            <ul>
-                {playAdRequests.map((request) => (
-                    <li key={request.playAdRequestId}>
-                        {request.requester} - {request.requesterHandicap} -
-                        <RequestButton
-                        path={`http://localhost:8085/api/playadrequest/accepted/${request.playAdRequestId}`}
-                        buttonText="accept"
-                        />
-                        <RequestButton
-                            path={`http://localhost:8085/api/playadrequest/denied/${request.playAdRequestId}`}
-                            buttonText="deny"
-                        />
-                    </li>
-                ))}
-            </ul>
-        </div>
-    ); */
+
+    function updateRequests(requestId) {
+        const updatedRequests = playAdRequests.filter(request => request.playAdRequestId !== requestId)
+        setPlayAdRequests(updatedRequests)
+    }
+
+
+
+
+    return <ListComponent playAdRequests={playAdRequests} updateRequests={updateRequests} />
 }

@@ -32,35 +32,29 @@ function UsersBookingsList() {
     async function handleRemoveBooking(removeId) {
         const userId = getUserId();
 
-        const options = {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({
-                playAdId: removeId,
-                userId: parseInt(userId)
-            })
-        };
+        console.log(removeId)
 
-        fetch(`http://localhost:8085/api/playad/remove`, options)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('booking was ok!', data);
-                const updatedPlayAds = playAds.filter(ad => ad.playAdId !== removeId);
-                setPlayAds(updatedPlayAds);
-            })
-            .catch(error => {
-                console.error('Fel vid bokning', error);
+        try {
+            const response = await fetch(`http://localhost:8085/api/playad/remove`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    playAdId: removeId,
+                    userId: parseInt(userId)
+                })
             });
 
-    }
+            if (response.ok) {
+                const updatedPlayAds = playAds.filter(ad => ad.playAdId !== removeId);
+                setPlayAds(updatedPlayAds);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
 
 

@@ -10,7 +10,7 @@ import {getAuthToken} from "../../util/Auth";
 import {SelectComponent} from "../NonFilteredSelect";
 import {FilteredSelectComponent} from "../FilteredSelectComponent";
 
-export const PlayAdForm = ({ method, playAd }) => function PlayAdForm({ method, playAd }) {
+export const OldPlayAdForm = ({ method, playAd }) => function PlayAdForm({ method, playAd }) {
     const data = useActionData();
     const navigate = useNavigate();
     const navigation = useNavigation();
@@ -85,7 +85,7 @@ export const PlayAdForm = ({ method, playAd }) => function PlayAdForm({ method, 
     );
 }
 
-export default PlayAdForm;
+export default OldPlayAdForm;
 
 export async function action({ request, params }) {
     const method = request.method;

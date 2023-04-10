@@ -14,8 +14,6 @@ import {NewPlayAd} from "./pages/NewPlayAd";
 import {ProfileRootLayout} from "./pages/ProfileRoot";
 import {BookingsRootLayout} from "./pages/BookingsRoot";
 import {AllUsersSearch} from "./pages/AllUsersSearch";
-import {UserProfileCard} from "./components/user/ProfileCard";
-import TestNewPlayAdForm from './pages/TestNewPlayAdForm';
 import UsersRequestsToList from './components/user/UsersRequestsToList';
 import BookingRequestsByUser from './components/user/BookingRequestsByUser';
 import UsersCreatedPlayAds from './components/user/UsersCreatedPlayAds';
@@ -23,6 +21,7 @@ import UsersBookingsList from './components/user/UsersBookingsList';
 import {OtherUsersRoot} from "./pages/OtherUsersRoot";
 import TestPage from "./pages/TestPage";
 import {RemadeProfileCard} from "./components/user/RemadeProfileCard";
+import CreateNewPlayAdForm from "./components/booking/CreateNewPlayAd";
 
 const router = createBrowserRouter([
   {
@@ -79,7 +78,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'new',
-            element: <NewPlayAd/>,
+            element: <CreateNewPlayAdForm/>,
           },
         ],
       },

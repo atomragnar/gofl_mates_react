@@ -41,11 +41,16 @@ export const FilteredSelectComponent = ({ endpoint, label, onChange, filterValue
     };
 
     return (
-        <div>
-            <InputLabel>
+            <InputLabel
+                style={{
+                display: 'block',
+                font: 'inherit'}}
+                className="font15">
                 {label}:
                 <Select value={selectedOption} onChange={handleSelectChange}
-                        style={{minWidth: '20vh', margin: '10px'}}>
+                        style={{width: '100%',
+                            display: 'block',
+                            font: 'inherit'}}>
                     {options.map((option) => (
                         <MenuItem key={option.id} value={option.id}>
                             {option.label}
@@ -53,6 +58,5 @@ export const FilteredSelectComponent = ({ endpoint, label, onChange, filterValue
                     ))}
                 </Select>
             </InputLabel>
-        </div>
     );
 }

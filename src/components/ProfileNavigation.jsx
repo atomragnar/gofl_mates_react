@@ -98,7 +98,7 @@ export const ProfileNavigation = () => {
                             </NavLink>
                         </li>
                     )}
-                    {token && (
+                 {/*   {token && (
                         <li className="semiBold font15 pointer1">
                             <NavLink
                                 to="/profile/edit"
@@ -115,7 +115,7 @@ export const ProfileNavigation = () => {
                                 Inställningar
                             </NavLink>
                         </li>
-                    )}
+                    )}*/}
                </UlWrapper>
         </div>
     );

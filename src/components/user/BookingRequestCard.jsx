@@ -1,23 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import {getAuthToken} from "../../util/Auth";
+import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@mui/material";
 
-export const BookingRequestCard = ({request}) => {
+export const BookingRequestCard = ({request, updateRequests}) => {
 
-    function handleRequestRespone() {
+    const [open, setOpen] = useState(false);
 
-        const confirm = window.confirm(`Vill du acceptera ${request.requester} i bollen?`)
+    async function handleRequestAcceptResponse() {
 
-        let path = `http://localhost:8085/api/playadrequest/accepted/${request.playAdRequestId}`;
-
-        if (confirm) {
-            path = `http://localhost:8085/api/playadrequest/accepted/${request.playAdRequestId}`;
-        } else {
-            path = `http://localhost:8085/api/playadrequest/denied/${request.playAdRequestId}`;
-        }
-
+        const path = `http://localhost:8085/api/playadrequest/accepted/${request.playAdRequestId}`;
         const token = getAuthToken()
-
         const options = {
             method: 'PUT',
             headers: {
@@ -31,25 +24,53 @@ export const BookingRequestCard = ({request}) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-                return response.json();
             })
             .then(data => {
-                console.log('Item updated:', data);
+                console.log('Item updated:');
+                updateRequests(request.playAdRequestId);
             })
             .catch(error => {
-                console.error('Error updating item:', error);
+                console.error('Error updating item:');
+            });
+
+    }
+
+    async function handleRequestDenyResponse() {
+
+        const path = `http://localhost:8085/api/playadrequest/denied/${request.playAdRequestId}`;
+        const token = getAuthToken()
+        const options = {
+            method: 'PUT',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({/* ... */})
+        };
+
+        fetch(path, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+            })
+            .then(data => {
+                console.log('Item updated:');
+                updateRequests(request.playAdRequestId);
+            })
+            .catch(error => {
+                console.error('Error updating item:');
             });
 
     }
 
 
     return (
-        <WrapperBtn className="animate pointer" onClick={() => handleRequestRespone()}>
+        <>
+        <WrapperBtn className="animate pointer" onClick={() => setOpen(true)}>
             <Wrapper className="whiteBg radius8 shadow">
                 <h3 className="font20 extraBold">#{request.playAdId}</h3>
                 <p className="font13" style={{ padding: "30px 0" }}>
-                    {request.requester} ({request.requesterHandicap}) vill delta i din boll {request.playAdTime}
-                    på {request.playAdCourse}.
+                    {request.requester} ({request.requesterHandicap}) vill delta i din boll {request.playAdTime} på {request.playAdCourse}.
                 </p>
                 <p className="font13 extraBold">{request.status}</p>
                 <div className="flex">
@@ -57,6 +78,27 @@ export const BookingRequestCard = ({request}) => {
                 </div>
             </Wrapper>
         </WrapperBtn>
+            <Dialog open={open} onClose={() => setOpen(false)}>
+                <DialogTitle>Är du säker?</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>`Vill du acceptera {request.requester} i bollen?`</DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleRequestAcceptResponse} variant="contained" color="secondary" autoFocus
+                            style={{width: '200px',
+                                height: '50px'}}>
+                        Acceptera {request.requester}
+                    </Button>
+                    <Button onClick={handleRequestDenyResponse} variant="contained" color="secondary" autoFocus
+                            style={{width: '200px',
+                                height: '50px'}}>
+                    >
+                        Acceptera inte {request.requester}
+                    </Button>
+                    <Button onClick={() => setOpen(false)}>Avbryt</Button>
+                </DialogActions>
+            </Dialog>
+        </>
     )
 }
 

@@ -11,7 +11,7 @@ export const BookingContent = ({children}) => {
 const Wrapper = styled.div`
   width: 70%;
   height: 70%;
-  margin-left: 15%;
+  margin-left: 18%;
   padding: 20px 30px;
   margin-top: 100px;
 `;

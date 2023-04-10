@@ -52,6 +52,7 @@ export const RemadePlayAdCard = ({playAd}) => {
                         )
                     )}
                 </StyledList>
+                {checkUsername(playAd, currentUserUsername) ? (
                 <div
                     style={{marginLeft: '20px', marginBottom: '30px', marginTop: '20px'}}
                 >
@@ -60,9 +61,17 @@ export const RemadePlayAdCard = ({playAd}) => {
                         userId={userId}
                     />
                 </div>
+                ) : ''}
             </LowerContainer2>
         </Wrapper2>
     )
+}
+
+
+function checkUsername(playAd, currentUserUsername) {
+    console.log(currentUserUsername)
+    return !(playAd.creatorUsername === currentUserUsername
+        || (playAd.bookedPlayers.some(player => player.username === currentUserUsername)));
 }
 
 

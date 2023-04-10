@@ -56,8 +56,8 @@ export const PlayAdCardUserBookedAd = ({playAd, handleRemoveBooking}) => {
                     style={{marginLeft: '20px', marginBottom: '30px', marginTop: '20px'}}
                 >
                 <UnBookSlotButton
-                playAdId={playAd.playAdId}
-                handleRemoveBookin={handleRemoveBooking}
+                playAd={playAd}
+                handleRemoveBooking={handleRemoveBooking}
                 />
                 </div>
             </LowerContainer2>
