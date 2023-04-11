@@ -23,6 +23,13 @@ import {RemadeProfileCard} from "./components/user/RemadeProfileCard";
 import CreateNewPlayAdForm from "./components/booking/CreateNewPlayAd";
 import {SuggestedBookingsPage, loader as suggestedPlayAdsLoader } from "./pages/SuggestedBookingsPage";
 import {LocationsBookingsPage, loader as locationsPlayAdsLoader} from "./pages/LocationsBookingsPage"
+import withAuth from "./util/WithAuth";
+
+
+const ProtectedBookingLayout = withAuth(BookingsRootLayout)
+const ProtectedUsersProfileRoute = withAuth(ProfileRootLayout)
+const ProtectedAllUsersRoute = withAuth(OtherUsersRoot)
+
 const router = createBrowserRouter([
   {
     path: '/',

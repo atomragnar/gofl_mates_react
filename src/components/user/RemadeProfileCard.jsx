@@ -19,6 +19,7 @@ export const RemadeProfileCard = () => {
             const response = await fetch(`http://localhost:8085/users/info/id/${userId}`, {
                 method: 'GET',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + token
                 }
             });
