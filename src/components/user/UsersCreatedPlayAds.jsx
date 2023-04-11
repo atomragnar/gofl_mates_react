@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {getAuthToken, getUserId} from "../../util/Auth";
 import {PlayAdsCard} from "../booking/PlayAdsCard";
 import {PlayAdsCardUserCreatedAd} from "../booking/PlayAdsCardUserCreatedAd";
@@ -50,6 +50,8 @@ function UsersCreatedPlayAds() {
     };
 
     return (
+        <>
+            {playAds.length > 0 ? (
         <div>
             <ul>
                 {playAds.map((playAd) => (
@@ -62,6 +64,10 @@ function UsersCreatedPlayAds() {
                 ))}
             </ul>
         </div>
+            ) : (
+                <h3 className="font20 extraBold">Hittade inga skapade speltider</h3>
+            )}
+        </>
     );
 }
 

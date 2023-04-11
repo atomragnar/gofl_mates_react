@@ -7,6 +7,7 @@ import {FilteredSelectComponent} from "../FilteredSelectComponent";
 import {getAuthToken, getUserId} from "../../util/Auth";
 import {ProfileContainer} from "../containers/ProfileContainer";
 import classes from './playadfrom.module.css'
+import {Checkbox, FormControlLabel} from "@mui/material";
 
 export default function CreateNewPlayAdForm() {
 
@@ -14,6 +15,7 @@ export default function CreateNewPlayAdForm() {
     const [locationId, setLocationId] = useState("");
     const [golfClubId, setGolfClubId] = useState("");
     const [courseId, setCourseId] = useState("");
+    const [isChecked, setIsChecked] = useState(false);
 
     const token = getAuthToken();
     const userId = getUserId();
@@ -33,11 +35,12 @@ export default function CreateNewPlayAdForm() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    userId: userId,
+                    userId: parseInt(userId),
                     courseId: courseId,
                     golfClubId: golfClubId,
                     locationId: locationId,
-                    teeTime: teeTime.toString()
+                    teeTime: teeTime.toISOString(),
+                    hasCar: isChecked
                 }),
             });
             const data = await response.json();
@@ -52,6 +55,10 @@ export default function CreateNewPlayAdForm() {
         const value = event.target.value;
         const date = new Date(value);
         setTeeTime(date);
+    };
+
+    const handleCheckboxChange = (event) => {
+        setIsChecked(event.target.checked);
     };
 
 
@@ -97,6 +104,19 @@ export default function CreateNewPlayAdForm() {
                         filterValue={golfClubId}
                         required
                     />
+                    <label>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={isChecked}
+                                    onChange={handleCheckboxChange}
+                                    name="hasCar"
+                                    color="primary"
+                                />
+                            }
+                            label="Har du bil?"
+                        />
+                </label>
                 <div className={classes.actions}>
                 <button type="submit">
 

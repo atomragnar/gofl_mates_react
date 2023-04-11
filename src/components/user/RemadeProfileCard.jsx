@@ -3,10 +3,13 @@ import {Avatar} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {getAuthToken, getUserId} from "../../util/Auth";
 import myImage from "../../assets/img/large-open-air-course-with-golf-stick-and-ball-web-header.jpg"
+import PopupForm from "../PopupForm";
+import { Warning as WarningIcon } from '@mui/icons-material';
 
 export const RemadeProfileCard = () => {
 
-    const [userInfo, setUserInfo] = useState(null);
+    const [userInfo, setUserInfo] = useState(false);
+    const [openPopupForm, setOpenPopupForm] = useState(false);
 
     const userId = getUserId();
     const token = getAuthToken();
@@ -20,15 +23,40 @@ export const RemadeProfileCard = () => {
                 }
             });
             const data = await response.json();
+            if ((data.location === "Ej registrerat" || data.golfClub === "Ej registrerat")) {
+                setOpenPopupForm(true);
+            }
             setUserInfo(data);
         }
         fetchUserInfo();
-    }, []);
+    }, [token, userId]);
 
     if (!userInfo) {
         return <p>Loading...</p>;
     }
 
+
+    const handlePopupClose = () => {
+        setOpenPopupForm(false);
+    };
+
+    const handlePopupOpen = () => {
+        setOpenPopupForm(true);
+    };
+
+    const handlePopupSubmit = async (data) => {
+        const response = await fetch(`http://localhost:8085/users/info/id/${userId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+            },
+            body: JSON.stringify(data),
+        });
+        const updatedUserInfo = await response.json();
+
+        setUserInfo(updatedUserInfo);
+    };
 
 
 
@@ -42,6 +70,16 @@ export const RemadeProfileCard = () => {
                     </ImageContainer2>
                 </UpperContainer2>
                 <LowerContainer2>
+                    {(userInfo.location === "Ej registrerat" || userInfo.golfClub === "Ej registrerat") && (
+                        <div style={{ textAlign: "center" }}>
+                            {/*<button onClick={handlePopupOpen}>Ställ in plats och golfklubb</button>*/}
+                            <WarningButton onClick={() => setOpenPopupForm(true)}>
+                                <WarningIcon style={{ marginRight: '5px' }} />
+                                Ställ in plats och golfklubb
+                            </WarningButton>
+                            <PopupForm open={openPopupForm} onClose={handlePopupClose} onSubmit={handlePopupSubmit} />
+                        </div>
+                    )}
                 <div
                     style={{marginLeft: '80px', marginBottom: '30px', marginTop: '5px'}}
                 >
@@ -66,6 +104,23 @@ export const RemadeProfileCard = () => {
             </Wrapper2>
     )
 }
+
+const WarningButton = styled.button`
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  
+  &:hover {
+    background-color: #d32f2f;
+  }
+`;
 
 
 const LowerContainer2 = styled.div`

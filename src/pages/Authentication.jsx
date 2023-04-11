@@ -45,25 +45,31 @@ export async function action({ request }) {
     }
 
     if (mode === 'login') {
-        
+
         const resData = await response.json();
         const token = resData.token;
-    
+
         const decodedToken = jwt_decode(token);
         console.log(decodedToken)
         const { sub: username, userId } = decodedToken;
-    
+
         localStorage.setItem('token', token);
         localStorage.setItem('userId', userId);
         localStorage.setItem('username', username);
-    
+
+        console.log(decodedToken.exp)
         const expiration = new Date();
         expiration.setHours(expiration.getHours() + 1);
-        localStorage.setItem('expiration', expiration.toISOString());
+
+        localStorage.setItem('expiration', expiration);
 
     }
 
-  
+    if (mode === 'login') {
+        return redirect('/profile');
+    } else {
+        return redirect('/auth?mode=login');
+    }
 
-    return redirect('/');
+
 }

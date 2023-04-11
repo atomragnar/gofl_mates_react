@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {getAuthToken, getUserId} from "../../util/Auth";
 import RequestButton from "./RequestButton";
 import ListComponent from "./CardsList";
@@ -37,5 +37,13 @@ export default function UsersRequestsToList() {
 
 
 
-    return <ListComponent playAdRequests={playAdRequests} updateRequests={updateRequests} />
+    return (
+        <>
+            {playAdRequests.length > 0 ? (
+        <ListComponent playAdRequests={playAdRequests} updateRequests={updateRequests} />
+            ) : (
+            <h3 className="font20 extraBold">Hittade inga bokningsförfrågningar</h3>
+            )}
+        </>
+    )
 }

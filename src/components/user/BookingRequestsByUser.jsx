@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {getAuthToken, getUserId} from "../../util/Auth";
 import styled from 'styled-components';
 import { Card, CardContent, CardActions, Button, Typography, List, ListItem, ListItemText } from '@mui/material';
@@ -27,10 +27,11 @@ export default function BookingRequestsByUser() {
         };
 
         fetchRequests();
-    }, []);
+    }, [token, userId]);
 
     return (
-
+<>
+    {playAdRequests.length > 0 ? (
             <List>
                 {playAdRequests.map((request) => (
                     <ListItem key={request.playAdRequestId}>
@@ -40,6 +41,10 @@ export default function BookingRequestsByUser() {
                     </ListItem>
                 ))}
             </List>
+    ) : (
+        <h3 className="font20 extraBold">Hittade inga bokningsförfrågningar</h3>
+    )}
+</>
 
     );
 }

@@ -1,7 +1,19 @@
 import {getAuthToken} from "../util/Auth";
 import {useEffect, useState} from "react";
 import styled from 'styled-components';
-import {Box, Input, List, ListItem, Typography, Pagination, Card, CardContent, CardActions, Button} from "@mui/material";
+import {
+    Box,
+    Input,
+    List,
+    ListItem,
+    Typography,
+    Pagination,
+    Card,
+    CardContent,
+    CardActions,
+    Button,
+    Divider, Grid
+} from "@mui/material";
 import {OtherUsersProfileCard} from "../components/OtherUsersProfileCard";
 
 export const AllUsersSearch = () => {
@@ -22,7 +34,7 @@ export const AllUsersSearch = () => {
             setUsers(data);
         }
         fetchObjects();
-    }, []);
+    }, [token]);
 
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -66,7 +78,8 @@ export const AllUsersSearch = () => {
 
 
     return (
-        <Box display="flex" flexDirection="column" alignItems="center" m={4}>
+        <>
+        <Grid xs={12} spacing={{ xs: 1, md: 2 }}>
             <Box mb={4}>
                 <Input
                     placeholder="Search..."
@@ -74,30 +87,23 @@ export const AllUsersSearch = () => {
                     onChange={handleSearchQueryChange}
                 />
             </Box>
-            <List>
+        </Grid>
+            <Divider/>
+            <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+                  justifyContent="center"
+                  alignItems="center">
                 {filteredUsers()
                     .slice((currentPage - 1) * usersPerPage, currentPage * usersPerPage)
                     .map((user) => (
-                        <ListItem key={user.id}>
+                        <Grid >
                             <OtherUsersProfileCard
                             user={user}
+                            key={user.id}
                             />
-                            {/*<CardWrapper>
-                            <CardContentWrapper>
-                            <Typography variant="h5" component="h2">
-                            {user.username}
-                            </Typography>
-                            <Typography color="textSecondary">
-                            {user.location} - {user.golfClub} - {user.handicap}
-                            </Typography>
-                            </CardContentWrapper>
-                            <CardActionsWrapper>
-                            <Button size="small">Button</Button>
-                            </CardActionsWrapper>
-                            </CardWrapper>*/}
-                        </ListItem>
+                        </Grid>
                     ))}
-            </List>
+            </Grid>
+    <Grid item xs={12}>
             <Box mt={4}>
                 <Pagination
                     count={totalPages}
@@ -106,7 +112,8 @@ export const AllUsersSearch = () => {
                     color="secondary"
                 />
             </Box>
-        </Box>
+    </Grid>
+</>
     );
 };
 

@@ -11,6 +11,7 @@ export const BookingsNavigation = () => {
     return (
         <div className="container1 flexSpaceCenter1">
                 <UlWrapper className="flexNullCenter1">
+                    {token && (
                     <li className="semiBold font15 pointer1">
                         <NavLink
                             to="/bookings"
@@ -24,9 +25,46 @@ export const BookingsNavigation = () => {
                             smooth={true}
                             offset={-80}
                         >
-                            Alla bokningar
+                            Alla
                         </NavLink>
                     </li>
+                    )}
+                    {token && (
+                        <li className="semiBold font15 pointer1">
+                            <NavLink
+                                to="/bookings/suggested"
+                                className={({ isActive }) =>
+                                    isActive ? classes.active : undefined
+                                }
+                                activeClass="active"
+                                activeClassName="active"
+                                style={{ padding: "10px 15px" }}
+                                spy={true}
+                                smooth={true}
+                                offset={-80}
+                            >
+                                Se speltider för ditt handikapp
+                            </NavLink>
+                        </li>
+                    )}
+                    {token && (
+                        <li className="semiBold font15 pointer1">
+                            <NavLink
+                                to="/bookings/locations"
+                                className={({ isActive }) =>
+                                    isActive ? classes.active : undefined
+                                }
+                                activeClass="active"
+                                activeClassName="active"
+                                style={{ padding: "10px 15px" }}
+                                spy={true}
+                                smooth={true}
+                                offset={-80}
+                            >
+                                Bokningar i ditt område
+                            </NavLink>
+                        </li>
+                    )}
                     {token && (
                         <li className="semiBold font15 pointer1">
                             <NavLink
@@ -41,7 +79,7 @@ export const BookingsNavigation = () => {
                                 smooth={true}
                                 offset={-80}
                             >
-                                <Fab color="secondary" onClick={() => alert('clicked')}>
+                                <Fab color="secondary" >
                                     <AddIcon/>
                                 </Fab>
                             </NavLink>

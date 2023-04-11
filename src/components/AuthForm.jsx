@@ -11,6 +11,9 @@ import WrapperCard from "./ui/WrapperCard";
 import {ProfileContainer} from "./containers/ProfileContainer";
 import styled from "styled-components";
 import FullButton from "./buttons/FullButton";
+import {SelectComponent} from "./NonFilteredSelect";
+import {FilteredSelectComponent} from "./FilteredSelectComponent";
+import React from "react";
 
 function AuthForm() {
     const data = useActionData();
@@ -22,47 +25,48 @@ function AuthForm() {
 
     return (
         <>
-            <ProfileContainer>
-                <StyledForm method="post" className={classes.form}>
-                    <h1 className="font30 extraBold"
-                        style={{ margin: "15px 0", marginBottom: "30px" }}
-                    >
+        <ProfileContainer>
+            <StyledForm method="post" className={classes.form}>
+                <h1 className="font30 extraBold"
+                    style={{margin: "15px 0", marginBottom: "30px"}}
+                >
 
-                        {isLogin ? 'Logga in' : 'Skapa en ny användare'}</h1>
-                    {data && data.errors && (
-                        <ul>
-                            {Object.values(data.errors).map((err) => (
-                                <li key={err}>{err}</li>
-                            ))}
-                        </ul>
-                    )}
-                    {data && data.message && <p>{data.message}</p>}
+                    {isLogin ? 'Logga in' : 'Skapa en ny användare'}</h1>
+                {data && data.errors && (
+                    <ul>
+                        {Object.values(data.errors).map((err) => (
+                            <li key={err}>{err}</li>
+                        ))}
+                    </ul>
+                )}
+                {data && data.message && <p>{data.message}</p>}
+                <p>
+                    <label className="font15" htmlFor="username">Användarnamn</label>
+                    <input id="username" type="username" name="username" required/>
+                </p>
+                {!isLogin && (
                     <p>
-                        <label className="font15" htmlFor="username">Användarnamn</label>
-                        <input id="username" type="username" name="username" required/>
+                        <label htmlFor="email">Email</label>
+                        <input id="email" type="email" name="email" required/>
                     </p>
-                    {!isLogin && (
-                        <p>
-                            <label htmlFor="email">Email</label>
-                            <input id="email" type="email" name="email" required/>
-                        </p>
-                    )}
-                    <p>
-                        <label htmlFor="image">Lösenord</label>
-                        <input id="password" type="password" name="password" required/>
-                    </p>
-                    <div className={classes.actions}>
-                        <Link to={`?mode=${isLogin ? 'signup' : 'login'}`} className="font13">
-                            {isLogin ? 'Om du inte har ett konto tryck här för att skapa nytt konto' : 'Om du redan har ett konto logga in här'}
-                        </Link>
-                        <button disabled={isSubmitting}>
-                            {isSubmitting ? 'Submitting...' : isLogin ? 'Logga in' : 'Skapa konto'}
-                        </button>
-                    </div>
-                </StyledForm>
-            </ProfileContainer>
-        </>
-    );
+            )}
+            <p>
+                <label htmlFor="image">Lösenord</label>
+                <input id="password" type="password" name="password" required/>
+            </p>
+            <div className={classes.actions}>
+                <Link to={`?mode=${isLogin ? 'signup' : 'login'}`} className="font13">
+                    {isLogin ? 'Om du inte har ett konto tryck här för att skapa nytt konto' : 'Om du redan har ett konto logga in här'}
+                </Link>
+                <button disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : isLogin ? 'Logga in' : 'Skapa konto'}
+                </button>
+            </div>
+        </StyledForm>
+        </ProfileContainer>
+</>
+)
+    ;
 }
 
 export default AuthForm;
@@ -70,6 +74,7 @@ export default AuthForm;
 
 const StyledForm = styled(Form)`
   padding: 70px 0 30px 0;
+
   input,
   textarea {
     width: 100%;
@@ -81,9 +86,11 @@ const StyledForm = styled(Form)`
     height: 30px;
     margin-bottom: 30px;
   }
+
   textarea {
     min-height: 100px;
   }
+
   @media (max-width: 860px) {
     padding: 30px 0;
   }

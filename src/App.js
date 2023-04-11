@@ -10,7 +10,6 @@ import { tokenLoader } from './util/Auth';
 
 
 import {SearchBookingsPage, loader as allPlayAdsLoader} from "./pages/SearchBookingsPage";
-import {NewPlayAd} from "./pages/NewPlayAd";
 import {ProfileRootLayout} from "./pages/ProfileRoot";
 import {BookingsRootLayout} from "./pages/BookingsRoot";
 import {AllUsersSearch} from "./pages/AllUsersSearch";
@@ -22,7 +21,8 @@ import {OtherUsersRoot} from "./pages/OtherUsersRoot";
 import TestPage from "./pages/TestPage";
 import {RemadeProfileCard} from "./components/user/RemadeProfileCard";
 import CreateNewPlayAdForm from "./components/booking/CreateNewPlayAd";
-
+import {SuggestedBookingsPage, loader as suggestedPlayAdsLoader } from "./pages/SuggestedBookingsPage";
+import {LocationsBookingsPage, loader as locationsPlayAdsLoader} from "./pages/LocationsBookingsPage"
 const router = createBrowserRouter([
   {
     path: '/',
@@ -75,6 +75,16 @@ const router = createBrowserRouter([
             index: true,
             element: <SearchBookingsPage/>,
             loader: allPlayAdsLoader,
+          },
+          {
+            path: 'suggested',
+            element: <SuggestedBookingsPage/>,
+            loader: suggestedPlayAdsLoader,
+          },
+          {
+            path: 'locations',
+            element: <LocationsBookingsPage/>,
+            loader: locationsPlayAdsLoader,
           },
           {
             path: 'new',

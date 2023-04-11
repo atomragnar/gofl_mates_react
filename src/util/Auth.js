@@ -7,6 +7,14 @@ export function getTokenDuration() {
     const now = new Date();
     const duration = expirationDate.getTime() - now.getTime();
     return duration;
+  /*  const token = localStorage.getItem('token');
+    if (!token) {
+        return -1;
+    }
+    const { exp } = jwt_decode(token);
+    const now = Math.floor(Date.now() / 1000);
+    const duration = exp - now;
+    return duration;*/
 }
 
 export function getUserId() {
