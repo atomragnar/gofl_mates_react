@@ -3,6 +3,8 @@ import {Avatar} from "@mui/material";
 import styled from "styled-components";
 import React from "react";
 import {DeleteBookingButton} from "./DeleteBookingButton";
+import ToysIcon from '@mui/icons-material/Toys';
+import { Tooltip } from '@mui/material'
 
 export const PlayAdsCardUserCreatedAd = ({playAd, handleDelete}) => {
 
@@ -16,8 +18,16 @@ export const PlayAdsCardUserCreatedAd = ({playAd, handleDelete}) => {
                     />
                 </ImageContainer2>
             <LowerContainer2>
-                <h3 className="font20 extraBold">#{playAd.playAdId} - {playAd.time}</h3>
-                <h3 className="font20 extraBold">{playAd.course}</h3>
+                <Tooltip title={"Genomsnitts Handikapp " + playAd.averageHandicap.toFixed(1)}>
+                    <h3 className="font20 extraBold">{playAd.hasCar && (
+                        <div>
+                            <ToysIcon/>
+                        </div>
+                    )} #{playAd.playAdId} - {playAd.course}</h3>
+                </Tooltip>
+                <p className="font13" style={{ padding: "10px 0" }}>
+                    {playAd.teeTimeDate} - {playAd.teeTime}
+                </p>
                 <p className="font13" style={{ padding: "10px 0" }}>
                     {playAd.golfClub}, {playAd.location}
                 </p>
@@ -25,22 +35,28 @@ export const PlayAdsCardUserCreatedAd = ({playAd, handleDelete}) => {
                 </p>
                 <StyledList>
                     <li>
-                        <Avatar
-                            style={{width: '40px', height: '40px', backgroundColor: '#f59e0b'}}
-                        >{playAd.creatorUsername.charAt(0)} </Avatar>
+                        <Tooltip title={playAd.creatorUsername + " " + playAd.creatorHandicap}>
+                            <Avatar
+                                style={{width: '40px', height: '40px', backgroundColor: '#064e3b'}}
+                            >{playAd.creatorUsername.charAt(0)} </Avatar>
+                        </Tooltip>
                     </li>
                     {playAd.bookedPlayers.map((player) =>
                         <li key={player.id} >
 
                             {player.username === 'empty' ? (
-                                    <Avatar
-                                        style={{width: '40px', height: '40px'}}
-                                    > + </Avatar>
+                                    <Tooltip title='ledig plats'>
+                                        <Avatar
+                                            style={{width: '40px', height: '40px'}}
+                                        > + </Avatar>
+                                    </Tooltip>
                                 ) :
                                 (
-                                    <Avatar
-                                        style={{width: '40px', height: '40px', backgroundColor: '#064e3b'}}
-                                    >{player.username.charAt(0)} </Avatar>
+                                    <Tooltip title={player.username + " " + player.handicap}>
+                                        <Avatar
+                                            style={{width: '40px', height: '40px', backgroundColor: '#064e3b'}}
+                                        >{player.username.charAt(0)} </Avatar>
+                                    </Tooltip>
                                 )
                             }
                         </li>
@@ -48,7 +64,7 @@ export const PlayAdsCardUserCreatedAd = ({playAd, handleDelete}) => {
                    {/* <p className="tag coralBg radius6 font13 extraBold">Handicap: {userInfo.handicap}</p>*/}
                 </StyledList>
                 <div
-                    style={{marginLeft: '20px', marginBottom: '30px', marginTop: '20px'}}
+                    style={{marginLeft: '20px', marginBottom: '10px', marginTop: '10px'}}
                 >
                 <DeleteBookingButton
                 playAd={playAd}

@@ -4,6 +4,8 @@ import styled from "styled-components";
 import React from "react";
 import {UnBookSlotButton} from "./UnBookSlotButton";
 import {getUserId, getUsername} from "../../util/Auth";
+import ToysIcon from '@mui/icons-material/Toys';
+import { Tooltip } from '@mui/material'
 
 export const PlayAdCardUserBookedAd = ({playAd, handleRemoveBooking}) => {
 
@@ -18,16 +20,26 @@ export const PlayAdCardUserBookedAd = ({playAd, handleRemoveBooking}) => {
                     />
                 </ImageContainer2>
             <LowerContainer2>
-                <h3 className="font20 extraBold">#{playAd.playAdId} - {playAd.time}</h3>
-                <h3 className="font20 extraBold">{playAd.course}</h3>
+                <Tooltip title={"Genomsnitts Handikapp " + playAd.averageHandicap.toFixed(1)}>
+                    <h3 className="font20 extraBold">{playAd.hasCar && (
+                        <div>
+                            <ToysIcon/>
+                        </div>
+                    )} #{playAd.playAdId} - {playAd.course}</h3>
+                </Tooltip>
+                <p className="font13" style={{ padding: "10px 0" }}>
+                    {playAd.teeTimeDate} - {playAd.teeTime}
+                </p>
                 <p className="font13" style={{ padding: "10px 0" }}>
                     {playAd.golfClub}, {playAd.location}
                 </p>
                 <StyledList>
                     <li>
-                        <Avatar
-                            style={{width: '40px', height: '40px', backgroundColor: '#064e3b'}}
-                        >{playAd.creatorUsername.charAt(0)} </Avatar>
+                        <Tooltip title={playAd.creatorUsername + " " + playAd.creatorHandicap}>
+                            <Avatar
+                                style={{width: '40px', height: '40px', backgroundColor: '#064e3b'}}
+                            >{playAd.creatorUsername.charAt(0)} </Avatar>
+                        </Tooltip>
                     </li>
                     {playAd.bookedPlayers.map((player) =>
                             player.username === 'empty' ? (
@@ -45,15 +57,17 @@ export const PlayAdCardUserBookedAd = ({playAd, handleRemoveBooking}) => {
 
                                 ) : (
                                       <li key={player.id} >
-                                        <Avatar
-                                            style={{width: '40px', height: '40px', backgroundColor: '#064e3b'}}
-                                        >{player.username.charAt(0)} </Avatar>
+                                          <Tooltip title={player.username + " " + player.handicap}>
+                                              <Avatar
+                                                  style={{width: '40px', height: '40px', backgroundColor: '#064e3b'}}
+                                              >{player.username.charAt(0)} </Avatar>
+                                          </Tooltip>
                                       </li>
                                     )
                     )}
                 </StyledList>
                 <div
-                    style={{marginLeft: '20px', marginBottom: '30px', marginTop: '20px'}}
+                    style={{marginLeft: '20px', marginBottom: '10px', marginTop: '10px'}}
                 >
                 <UnBookSlotButton
                 playAd={playAd}
